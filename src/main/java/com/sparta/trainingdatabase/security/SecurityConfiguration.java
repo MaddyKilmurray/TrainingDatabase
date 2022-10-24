@@ -41,6 +41,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf()
                 .disable()
+                .requestCache()
+                .disable()
                 .authorizeRequests()
                 .anyRequest()
                 .permitAll()

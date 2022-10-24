@@ -1,57 +1,34 @@
-package com.sparta.trainingdatabase.model.entity.company;
+package com.sparta.trainingdatabase.model.dto;
 
 import lombok.Data;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
-@Document(collection = "companies")
-public class Company {
-
-    @MongoId
+public class CompanyDto {
     private ObjectId id;
     private String name;
     private String permalink;
-    @Field("crunchbase_url")
     private String crunchbaseUrl;
-    @Field("homepage_url")
     private String homepage;
-    @Field("blog_url")
     private String blogUrl;
-    @Field("blog_feed_url")
     private String blogFeedUrl;
-    @Field("twitter_username")
     private String twitterUsername;
-    @Field("category_code")
     private String categoryCode;
-    @Field("number_of_employees")
     private int numberOfEmployees;
-    @Field("founded_year")
     private int foundedYear;
-    @Field("founded_month")
     private int foundedMonth;
-    @Field("founded_day")
     private int foundedDay;
-    @Field("deadpooled_year")
     private int deadpooledYear;
-    @Field("tag_list")
     private String tagList;
-    @Field("alias_list")
     private String aliasList;
-    @Field("email_address")
     private String email;
-    @Field("phone_number")
     private String phone;
     private String description;
-    @Field("created_at")
     private String createdAt;
-    @Field("updated_at")
     private String updatedAt;
     private String overview;
 
-    public Company(ObjectId id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
+    public CompanyDto(ObjectId id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
         this.id = id;
         this.name = name;
         this.permalink = permalink;
@@ -76,7 +53,31 @@ public class Company {
         this.overview = overview;
     }
 
-    public Company() {
+    public CompanyDto(String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
+        this.name = name;
+        this.permalink = permalink;
+        this.crunchbaseUrl = crunchbaseUrl;
+        this.homepage = homepage;
+        this.blogUrl = blogUrl;
+        this.blogFeedUrl = blogFeedUrl;
+        this.twitterUsername = twitterUsername;
+        this.categoryCode = categoryCode;
+        this.numberOfEmployees = numberOfEmployees;
+        this.foundedYear = foundedYear;
+        this.foundedMonth = foundedMonth;
+        this.foundedDay = foundedDay;
+        this.deadpooledYear = deadpooledYear;
+        this.tagList = tagList;
+        this.aliasList = aliasList;
+        this.email = email;
+        this.phone = phone;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.overview = overview;
+    }
+
+    public CompanyDto() {
     }
 
     public ObjectId getId() {

@@ -13,22 +13,20 @@ import java.util.Set;
 
 @Service
 public class AuthUserDetailService implements UserDetailsService {
-    
-    private final UserRepository userRepository;
 
-    public AuthUserDetailService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private final UserRepository repository;
+
+    public AuthUserDetailService(UserRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> wrappedUser = userRepository.findByEmail(username);
-        if (wrappedUser.isEmpty()) {
-            throw new UsernameNotFoundException("Username could not be found");
-        }
+        Optional<User> wrappedUser = repository.findByEmail(username);
+        if (wrappedUser.isEmpty())
+            throw new UsernameNotFoundException("Username not found");
         User user = wrappedUser.get();
 
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-                Set.of(new SimpleGrantedAuthority(user.getRole().name())));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), Set.of(new SimpleGrantedAuthority(user.getRole().name())));
     }
 }

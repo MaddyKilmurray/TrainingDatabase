@@ -1,37 +1,40 @@
-package com.sparta.trainingdatabase.model.entity.user;
+package com.sparta.trainingdatabase.model.dto;
 
-
+import com.sparta.trainingdatabase.model.entity.user.Role;
 import lombok.Data;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
-@Document(collection="users")
-public class User {
-    @MongoId
+public class UserDto {
     private String id;
     private String name;
     private String email;
     private String password;
     private Role role;
 
-    public User() {
-    }
-
-    public User(String name, String email, String password, Role role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-
-    public User(String id, String name, String email, String password, Role role) {
+    public UserDto(String id, String name, String email, String password, Role role) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public UserDto(String name, String email, String password, Role role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public UserDto() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
