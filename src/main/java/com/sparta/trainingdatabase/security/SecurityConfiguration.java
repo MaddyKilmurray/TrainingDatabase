@@ -45,17 +45,17 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeRequests()
                 .anyRequest()
+                .hasAnyAuthority("ADMIN","USER")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
-                .formLogin();
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/login")
-//                .and()
-//                .exceptionHandling().accessDeniedPage("/accessdenied");
+                .logout()
+                .logoutSuccessUrl("/login")
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessdenied");
         return httpSecurity.build();
     }
 }
