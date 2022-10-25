@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Training Database - Homepage</title>
+</head>
+<body>
+
+<nav class="mainnav">
+    <a class="active" href="index">Home</a>
+    <a href="allCompanies">Companies</a>
+    <a href="profile">Profile</a>
+    <a href="logout">Log Out</a>
+</nav>
+
+<main>
+    <h4 th:if="${deleted}">Company record deleted!</h4>
+    <table>
+        <th>
+            <tr>
+                <th>Name</th>
+                <th>Homepage</th>
+                <th>Description</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </th>
+        <tr th:each="company : ${allCompanies}">
+            <td th:text="${company.name}"></td>
+            <td th:text="${company.homepage}"></td>
+            <td th:text="${company.description}"></td>
+            <td th:text="${company.email}"></td>
+            <td th:text="${company.phone}"></td>
+            <td>
+                <form action="#" th:action="@{/companies/byid}" th:object="${company}" th:method="get" >
+                    <input hidden class="actor_search_input form-control" type="number" id="id" name="id"
+                           th:value="${company.id}"/>
+                    <button type="submit" class="btn btn-info">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/companies/delete/{id}'(id=${company.id})}" th:method="delete" >
+                    <button type="submit" class="btn btn-info">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</main>
+
+</body>
+</html>

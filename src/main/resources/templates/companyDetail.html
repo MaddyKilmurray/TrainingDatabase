@@ -9,13 +9,15 @@
 
 <nav class="mainnav">
     <a class="active" href="index">Home</a>
-    <a href="companies">Companies</a>
+    <a href="allCompanies">Companies</a>
     <a href="profile">Profile</a>
-<!--    <a href="showing">Showing</a>-->
-<!--    <a href="theaterMain">Theater</a>-->
-<!--    <a href="searchUser">Search User</a>-->
     <a href="logout">Log Out</a>
 </nav>
 
+<main>
+    <h1>Company Record</h1>
+
+    <h3 th:text="'Company name: ' + ${foundCompany.name}"></h3>
+</main>
 </body>
 </html>

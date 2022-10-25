@@ -7,13 +7,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration {
 
     private final AuthUserDetailService authUserDetailService;
@@ -44,6 +44,10 @@ public class SecurityConfiguration {
                 .requestCache()
                 .disable()
                 .authorizeRequests()
+                .antMatchers("/signup","/webjars/bootstrap/4.1.2/css/bootstrap.min.css")
+                .permitAll()
+                .and()
+                .authorizeRequests()
                 .anyRequest()
                 .hasAnyAuthority("ADMIN","USER")
                 .and()
@@ -54,6 +58,9 @@ public class SecurityConfiguration {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login")
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessdenied");
         return httpSecurity.build();

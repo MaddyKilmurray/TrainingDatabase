@@ -36,6 +36,14 @@ public class UserDao {
         return nullReturn();
     }
 
+    public UserDto findByEmail(String email) {
+        Optional<User> foundUser = repository.findByEmail(email);
+        if (foundUser.isPresent()) {
+            return convert(foundUser.get());
+        }
+        return nullReturn();
+    }
+
     public UserDto save(UserDto userDto) {
         User userToSave = convertDto(userDto);
         repository.save(userToSave);
@@ -58,7 +66,7 @@ public class UserDao {
                 foundUser.get().setRole(userDto.getRole());
             }
             repository.save(foundUser.get());
-            return findByid(foundUser.get().getId().toString());
+            return findByid(userDto.getId());
         }
         return nullReturn();
     }
