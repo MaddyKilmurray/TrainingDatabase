@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Training Database - Homepage</title>
+</head>
+<body>
+
+<nav class="mainnav">
+    <a class="active" href="index">Home</a>
+    <a href="allCompanies">Companies</a>
+    <a href="profile">Profile</a>
+    <a href="logout">Log Out</a>
+</nav>
+
+<main>
+    <h1>Edit a Company Record</h1>
+
+    <h4 th:if="${editError}">Company record could not be added</h4>
+
+    <div>
+        <form action="#" th:action="@{/companies/edit}" th:object="${editCompany}" method="patch">
+            <label for="id" hidden>ID: </label>
+            <input type="text" id="id" name="id" th:field="*{id}"
+                   th:value="${editCompany.id}"/>
+            <label for="name" hidden>Company name: </label>
+            <input type="text" id="name" name="name" th:field="*{name}"
+                   th:placeholder="${editCompany.name}"/>
+            <label for="permalink" hidden>Permalink: </label>
+            <input type="text" id="permalink" name="permalink" th:field="*{permalink}"
+                   th:placeholder="${editCompany.permalink}"/>
+            <label for="crunchbaseUrl" hidden>Crunchbase URL: </label>
+            <input type="text" id="crunchbaseUrl" name="crunchbaseUrl" th:field="*{crunchbaseUrl}"
+                   th:placeholder="${editCompany.crunchbaseUrl}"/>
+            <label for="homepage" hidden>Homepage: </label>
+            <input type="text" id="homepage" name="homepage" th:field="*{homepage}"
+                   th:placeholder="${editCompany.homepage}"/>
+            <label for="blogUrl" hidden>Blog URL: </label>
+            <input type="text" id="blogUrl" name="blogUrl" th:field="*{blogUrl}"
+                   th:placeholder="${editCompany.blogUrl}"/>
+            <label for="blogFeedUrl" hidden>Blog Feed URL: </label>
+            <input type="text" id="blogFeedUrl" name="blogFeedUrl" th:field="*{blogFeedUrl}"
+                   th:placeholder="${editCompany.blogFeedUrl}"/>
+            <label for="twitterUsername" hidden>Twitter Username: </label>
+            <input type="text" id="twitterUsername" name="twitterUsername" th:field="*{twitterUsername}"
+                   th:placeholder="${editCompany.twitterUsername}"/>
+            <label for="categoryCode" hidden>Category Code: </label>
+            <input type="text" id="categoryCode" name="categoryCode" th:field="*{categoryCode}"
+                   th:placeholder="${editCompany.categoryCode}"/>
+            <label for="numberOfEmployees" hidden>Number Of Employees: </label>
+            <input type="number" id="numberOfEmployees" name="numberOfEmployees" th:field="*{numberOfEmployees}"
+                   th:placeholder="${editCompany.numberOfEmployees}"/>
+            <label for="foundedYear" hidden>Founded Year: </label>
+            <input type="number" id="foundedYear" name="foundedYear" th:field="*{foundedYear}"
+                   th:placeholder="${editCompany.foundedYear}"/>
+            <label for="foundedMonth" hidden>Founded Month: </label>
+            <input type="number" id="foundedMonth" name="foundedMonth" th:field="*{foundedMonth}"
+                   th:placeholder="${editCompany.foundedMonth}"/>
+            <label for="foundedDay" hidden>Founded Day: </label>
+            <input type="number" id="foundedDay" name="foundedDay" th:field="*{foundedDay}"
+                   th:placeholder="${editCompany.foundedDay}"/>
+            <label for="deadpooledYear" hidden>Deadpooled Year: </label>
+            <input type="number" id="deadpooledYear" name="deadpooledYear" th:field="*{deadpooledYear}"
+                   th:placeholder="${editCompany.deadpooledYear}"/>
+            <label for="tagList" hidden>Tag List: </label>
+            <input type="paragraph" id="tagList" name="tagList" th:field="*{tagList}"
+                   th:placeholder="${editCompany.tagList}"/>
+            <label for="aliasList" hidden>Alias List: </label>
+            <input type="text" id="aliasList" name="aliasList" th:field="*{aliasList}"
+                   th:placeholder="${editCompany.aliasList}"/>
+            <label for="email" hidden>Email: </label>
+            <input type="email" id="email" name="email" th:field="*{email}"
+                   th:placeholder="${editCompany.email}"/>
+            <label for="phone" hidden>Phone Number: </label>
+            <input type="number" id="phone" name="phone" th:field="*{phone}"
+                   th:placeholder="${editCompany.phone}"/>
+            <label for="description" hidden>Description: </label>
+            <input type="paragraph" id="description" name="description" th:field="*{description}"
+                   th:placeholder="${editCompany.description}"/>
+
+            <label for="createdAt" hidden>Created At: </label>
+            <input type="date" id="createdAt" name="createdAt" th:field="*{createdAt}"
+                   th:placeholder="${editCompany.createdAt}"/>
+            <label for="updatedAt" hidden>Updated At: </label>
+            <input type="date" id="updatedAt" name="updatedAt" th:field="*{updatedAt}"
+                   th:placeholder="${editCompany.updatedAt}"/>
+            <label for="overview" hidden>Overview: </label>
+            <input type="paragraph" id="overview" name="overview" th:field="*{overview}"
+                   th:placeholder="${editCompany.overview}"/>
+
+            <input type="submit" value="Submit" class="btn btn-info"/>
+            <input type="reset" value="Reset" class="btn btn-info"/>
+        </form>
+    </div>
+</main>
+</body>
+</html>

@@ -4,12 +4,13 @@ import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @Document(collection = "inspections")
 public class Inspection {
-    @MongoId
+    @MongoId(FieldType.OBJECT_ID)
     @Field("_id")
     private String id;
     @Field("id")

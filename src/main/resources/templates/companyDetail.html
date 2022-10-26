@@ -18,6 +18,33 @@
     <h1>Company Record</h1>
 
     <h3 th:text="'Company name: ' + ${foundCompany.name}"></h3>
+    <p th:text="'Last updated: ' + ${foundCompany.updatedAt}"></p>
+    <ul>
+        <li th:text="'Contact Email: ' + ${foundCompany.email}"></li>
+        <li th:text="'Contact Phone: ' + ${foundCompany.phone}"></li>
+        <li th:text="'Description: ' + ${foundCompany.description}"></li>
+        <li th:text="'Permalink: ' + ${foundCompany.permalink}"></li>
+        <li th:text="'CrunchBase Url: ' + ${foundCompany.crunchbaseUrl}"></li>
+        <li th:text="'Business Homepage: ' + ${foundCompany.homepage}"></li>
+        <li th:text="'Blog URL: ' + ${foundCompany.blogUrl}"></li>
+        <li th:text="'Twitter Username: ' + ${foundCompany.twitterUsername}"></li>
+        <li th:text="'Category Code: ' + ${foundCompany.categoryCode}"></li>
+        <li th:text="'Number of Employees: ' + ${foundCompany.numberOfEmployees}"></li>
+        <li th:text="'Founded: ' + ${foundCompany.foundedDay} + '/' + ${foundCompany.foundedMonth} + '/' + ${foundCompany.foundedYear}"></li>
+        <li th:text="'Deadpooled Year: ' + ${foundCompany.deadpooledYear}"></li>
+    </ul>
+
+    <aside>
+        [(${foundCompany.overview})]
+    </aside>
+
+    <form action="#" th:action="@{'/companies/edit/{id}'(id=${foundCompany.id})}" th:method="get" >
+        <button type="submit" class="btn btn-info">Edit</button>
+    </form>
+
+    <form action="#" th:action="@{'/companies/delete/{id}'(id=${foundCompany.id})}" th:method="delete" >
+        <button type="submit" class="btn btn-info">Delete</button>
+    </form>
 </main>
 </body>
 </html>

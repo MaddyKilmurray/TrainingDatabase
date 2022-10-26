@@ -29,7 +29,7 @@ public class UserDao {
     }
 
     public UserDto findByid(String id) {
-        Optional<User> foundUser = repository.findById(new ObjectId(id));
+        Optional<User> foundUser = repository.findById(id);
         if (foundUser.isPresent()) {
             return convert(foundUser.get());
         }
@@ -51,7 +51,7 @@ public class UserDao {
     }
 
     public UserDto update(UserDto userDto) {
-        Optional<User> foundUser = repository.findById(new ObjectId(userDto.getId()));
+        Optional<User> foundUser = repository.findById(userDto.getId());
         if (foundUser.isPresent()) {
             if (userDto.getName() != null) {
                 foundUser.get().setName(userDto.getName());
@@ -72,7 +72,7 @@ public class UserDao {
     }
 
     public UserDto delete(String id) {
-        Optional<User> foundUser = repository.findById(new ObjectId(id));
+        Optional<User> foundUser = repository.findById(id);
         if (foundUser.isPresent()) {
             repository.delete(foundUser.get());
             return convert(foundUser.get());

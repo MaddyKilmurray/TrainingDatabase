@@ -29,7 +29,7 @@ public class InspectionDao {
     }
 
     public InspectionDto findByid(String id) {
-        Optional<Inspection> foundInspection = repository.findById(new ObjectId(id));
+        Optional<Inspection> foundInspection = repository.findById(id);
         if (foundInspection.isPresent()) {
             return convert(foundInspection.get());
         }
@@ -43,7 +43,7 @@ public class InspectionDao {
     }
 
     public InspectionDto update(InspectionDto inspectionDto) {
-        Optional<Inspection> foundInspection = repository.findById(new ObjectId(inspectionDto.getId()));
+        Optional<Inspection> foundInspection = repository.findById(inspectionDto.getId());
         if (foundInspection.isPresent()) {
             if (inspectionDto.getCertificateNumber() != null) {
                 foundInspection.get().setCertificateNumber(inspectionDto.getCertificateNumber());
@@ -70,7 +70,7 @@ public class InspectionDao {
     }
 
     public InspectionDto delete(String id) {
-        Optional<Inspection> foundInspection = repository.findById(new ObjectId(id));
+        Optional<Inspection> foundInspection = repository.findById(id);
         if (foundInspection.isPresent()) {
             repository.delete(foundInspection.get());
             return convert(foundInspection.get());

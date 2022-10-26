@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <title>Training Database - Homepage</title>
+</head>
+<body>
+
+<nav class="mainnav">
+    <a class="active" href="index">Home</a>
+    <a href="allCompanies">Companies</a>
+    <a href="profile">Profile</a>
+    <a href="logout">Log Out</a>
+</nav>
+
+<main>
+    <h1>Add a New Company Record</h1>
+
+    <h4 th:if="${addingError}">Company record could not be added</h4>
+
+    <div>
+        <form action="#" th:action="@{/companies/add}" th:object="${addedCompany}" method="post">
+            <label for="name" hidden>Company name: </label>
+            <input type="text" id="name" name="name" th:field="*{name}"
+                   placeholder="Company Name"/>
+            <label for="permalink" hidden>Permalink: </label>
+            <input type="text" id="permalink" name="permalink" th:field="*{permalink}"
+                   placeholder="Permalink"/>
+            <label for="crunchbaseUrl" hidden>Crunchbase URL: </label>
+            <input type="text" id="crunchbaseUrl" name="crunchbaseUrl" th:field="*{crunchbaseUrl}"
+                   placeholder="Crunchbase URL"/>
+            <label for="homepage" hidden>Homepage: </label>
+            <input type="text" id="homepage" name="homepage" th:field="*{homepage}"
+                   placeholder="Homepage"/>
+            <label for="blogUrl" hidden>Blog URL: </label>
+            <input type="text" id="blogUrl" name="blogUrl" th:field="*{blogUrl}"
+                   placeholder="Blog URL"/>
+            <label for="blogFeedUrl" hidden>Blog Feed URL: </label>
+            <input type="text" id="blogFeedUrl" name="blogFeedUrl" th:field="*{blogFeedUrl}"
+                   placeholder="Blog Feed URL"/>
+            <label for="twitterUsername" hidden>Twitter Username: </label>
+            <input type="text" id="twitterUsername" name="twitterUsername" th:field="*{twitterUsername}"
+                   placeholder="Twitter Username"/>
+            <label for="categoryCode" hidden>Category Code: </label>
+            <input type="text" id="categoryCode" name="categoryCode" th:field="*{categoryCode}"
+                   placeholder="Category Code"/>
+            <label for="numberOfEmployees" hidden>Number Of Employees: </label>
+            <input type="number" id="numberOfEmployees" name="numberOfEmployees" th:field="*{numberOfEmployees}"
+                   placeholder="Number Of Employees"/>
+            <label for="foundedYear" hidden>Founded Year: </label>
+            <input type="number" id="foundedYear" name="foundedYear" th:field="*{foundedYear}"
+                   placeholder="Founded Year"/>
+            <label for="foundedMonth" hidden>Founded Month: </label>
+            <input type="number" id="foundedMonth" name="foundedMonth" th:field="*{foundedMonth}"
+                   placeholder="Founded Month"/>
+            <label for="foundedDay" hidden>Founded Day: </label>
+            <input type="number" id="foundedDay" name="foundedDay" th:field="*{foundedDay}"
+                   placeholder="Founded Day"/>
+            <label for="deadpooledYear" hidden>Deadpooled Year: </label>
+            <input type="number" id="deadpooledYear" name="deadpooledYear" th:field="*{deadpooledYear}"
+                   placeholder="Deadpooled Year"/>
+            <label for="tagList" hidden>Tag List: </label>
+            <input type="paragraph" id="tagList" name="tagList" th:field="*{tagList}"
+                   placeholder="Tag List"/>
+            <label for="aliasList" hidden>Alias List: </label>
+            <input type="text" id="aliasList" name="aliasList" th:field="*{aliasList}"
+                   placeholder="Alias List"/>
+            <label for="email" hidden>Email: </label>
+            <input type="email" id="email" name="email" th:field="*{email}"
+                   placeholder="Email"/>
+            <label for="phone" hidden>Phone Number: </label>
+            <input type="number" id="phone" name="phone" th:field="*{phone}"
+                   placeholder="Phone Number"/>
+            <label for="description" hidden>Description: </label>
+            <input type="paragraph" id="description" name="description" th:field="*{description}"
+                   placeholder="Description"/>
+
+            <label for="createdAt" hidden>Created At: </label>
+            <input type="date" id="createdAt" name="createdAt" th:field="*{createdAt}"
+                   placeholder="Created At"/>
+            <label for="updatedAt" hidden>Updated At: </label>
+            <input type="date" id="updatedAt" name="updatedAt" th:field="*{updatedAt}"
+                   placeholder="Updated At"/>
+            <label for="overview" hidden>Overview: </label>
+            <input type="paragraph" id="overview" name="overview" th:field="*{overview}"
+                   placeholder="Overview"/>
+
+            <input type="submit" value="Submit" class="btn btn-info"/>
+            <input type="reset" value="Reset" class="btn btn-info"/>
+        </form>
+    </div>
+</main>
+</body>
+</html>

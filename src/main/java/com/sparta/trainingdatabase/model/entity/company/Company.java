@@ -1,17 +1,18 @@
 package com.sparta.trainingdatabase.model.entity.company;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @Document(collection = "companies")
 public class Company {
 
-    @MongoId
-    private ObjectId id;
+    @MongoId(FieldType.OBJECT_ID)
+    private String id;
     private String name;
     private String permalink;
     @Field("crunchbase_url")
@@ -51,7 +52,7 @@ public class Company {
     private String updatedAt;
     private String overview;
 
-    public Company(ObjectId id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
+    public Company(String id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
         this.id = id;
         this.name = name;
         this.permalink = permalink;
@@ -79,11 +80,11 @@ public class Company {
     public Company() {
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

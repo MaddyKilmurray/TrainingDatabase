@@ -3,7 +3,6 @@ package com.sparta.trainingdatabase.model.dao;
 import com.sparta.trainingdatabase.model.dto.CompanyDto;
 import com.sparta.trainingdatabase.model.entity.company.Company;
 import com.sparta.trainingdatabase.model.repository.CompanyRepository;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class CompanyDao {
     }
 
     public CompanyDto findByid(String id) {
-        Optional<Company> foundCompany = repository.findById(new ObjectId(id));
+        Optional<Company> foundCompany = repository.findById(id);
         if (foundCompany.isPresent()) {
             return convert(foundCompany.get());
         }
@@ -116,7 +115,7 @@ public class CompanyDao {
     }
 
     public CompanyDto delete(String id) {
-        Optional<Company> foundCompany = repository.findById(new ObjectId(id));
+        Optional<Company> foundCompany = repository.findById(id);
         if (foundCompany.isPresent()) {
             repository.delete(foundCompany.get());
             return convert(foundCompany.get());

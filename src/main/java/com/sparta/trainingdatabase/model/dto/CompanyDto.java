@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 @Data
 public class CompanyDto {
-    private ObjectId id;
+    private String id;
     private String name;
     private String permalink;
     private String crunchbaseUrl;
@@ -28,7 +28,7 @@ public class CompanyDto {
     private String updatedAt;
     private String overview;
 
-    public CompanyDto(ObjectId id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
+    public CompanyDto(String id, String name, String permalink, String crunchbaseUrl, String homepage, String blogUrl, String blogFeedUrl, String twitterUsername, String categoryCode, int numberOfEmployees, int foundedYear, int foundedMonth, int foundedDay, int deadpooledYear, String tagList, String aliasList, String email, String phone, String description, String createdAt, String updatedAt, String overview) {
         this.id = id;
         this.name = name;
         this.permalink = permalink;
@@ -80,11 +80,11 @@ public class CompanyDto {
     public CompanyDto() {
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

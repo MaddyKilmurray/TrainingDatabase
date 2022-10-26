@@ -4,12 +4,13 @@ package com.sparta.trainingdatabase.model.entity.user;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 @Document(collection="users")
 public class User {
-    @MongoId
+    @MongoId(FieldType.OBJECT_ID)
     private String id;
     private String name;
     private String email;
